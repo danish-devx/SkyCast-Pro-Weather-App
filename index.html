@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast Pro - Full Suite</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <nav class="sidebar" id="sidebarMenu">
+        <div class="px-4 mb-4 d-flex justify-content-between align-items-center sidebar-header">
+            <h4 class="mb-0">
+                <i class="fa-solid fa-cloud-bolt text-info me-2"></i>Sky<span>Cast</span>
+            </h4>
+            <i class="fa-solid fa-xmark fs-4 d-lg-none text-white" id="close-btn" style="cursor: pointer"></i>
+        </div>
+
+        <div class="nav flex-column">
+            <a href="index.html" class="nav-link ">
+                <i class="fa-solid fa-table-columns me-3"
+                    style=" box-shadow: 0 4px 12px rgba(13, 202, 240, 0.2);"></i>Dashboard
+            </a>
+            <a href="pages/currentWeather.html" class="nav-link">
+                <i class="fa-solid fa-temperature-high me-3"></i>Current Weather
+            </a>
+            <a href="pages/hourlyForecast.html" class="nav-link">
+                <i class="fa-solid fa-clock me-3"></i>Hourly Forecast
+            </a>
+            <a href="pages/5dayForecast.html" class="nav-link">
+                <i class="fa-solid fa-calendar-days me-3"></i>5-Day Forecast
+            </a>
+            <a href="pages/airQuality.html" class="nav-link">
+                <i class="fa-solid fa-wind me-3"></i>Air Quality
+            </a>
+            <a href="pages/weatherAlerts.html" class="nav-link">
+                <i class="fa-solid fa-triangle-exclamation me-3"></i>Weather Alerts
+            </a>
+        </div>
+
+        <div class="author-main-box">
+
+            <div class="author-name-shortform">
+                DD
+            </div>
+
+            <div class="author-github-link">
+
+                <a href="https://github.com/danish-devx">danish-devx</a>
+                <p><i class="fa-solid fa-circle"></i> Active Pro</p>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="main-wrapper">
+        <header class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div class="main-heading">
+                <h6 class="text-uppercase text-sky mb-1">Live Insights</h6>
+                <h3 id="section-title" class="mb-1">Weather <span>Hub</span></h3>
+                <h5 class="mb-0">Insights for <span id="Insight-for-city">---</span></h5>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 header-actions">
+                <div class="search-box mb-0">
+                    <input type="text" id="city-search" placeholder="Search city (e.g. Karachi)" />
+                    <button id="searchBtn">Search</button>
+                </div>
+                <button class="btn text-white d-lg-none p-0 border-0" id="menu-btn">
+                    <i class="fa-solid fa-bars fs-3"></i>
+                </button>
+            </div>
+        </header>
+
+
+        <div id="dashboard" class="content-section">
+            <div class="row g-4">
+
+                <div class="col-xl-8 col-lg-7">
+                    <div class="glass-card main-weather-card text-white border-0 d-flex flex-column justify-content-between"
+                        style="background:  linear-gradient(135deg, #0dcaf0, #3a7bd5);  box-shadow: 0 4px 15px rgba(13, 202, 240, 0.3);">
+                        <div>
+                            <h2 id="city-name" class="fw-bold display-5 mb-1">--</h2>
+                            <p class="opacity-75" id="currentDate">--</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between my-4 flex-wrap">
+                            <h1 id="main-temp" class="display-1 fw-bold mb-0">---</h1>
+                            <img src="https://openweathermap.org/img/wn/04d@4x.png" alt="weather icon"
+                                class="weather-img" id="images" />
+                        </div>
+                        <p id="weather-desc" class="fs-4 mb-0 text-capitalize">---</p>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-4 col-lg-5">
+                    <div class="glass-card atmosphere-card">
+                        <h5 class="fw-bold mb-4 ps-2">Atmosphere</h5>
+
+                        <div class="sun-box d-flex justify-content-around align-items-center mb-4 p-3 rounded-4">
+                            <div class="text-center">
+                                <i class="fa-solid fa-sun text-warning fs-3 mb-2 animate-pulse"></i>
+                                <small class="d-block text-secondary text-uppercase font-xs">Sunrise</small>
+                                <b id="sunrise-time" class="fs-6">---</b>
+                            </div>
+                            <div class="vr opacity-25" style="height: 40px;"></div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-moon text-info fs-3 mb-2"></i>
+                                <small class="d-block text-secondary text-uppercase font-xs">Sunset</small>
+                                <b id="sunset-time" class="fs-6">---</b>
+                            </div>
+                        </div>
+
+
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="icon-wrap bg-warning-subtle"><i
+                                        class="fa-solid fa-temperature-half text-warning"></i></div>
+                                <div>
+                                    <small>Feels Like</small>
+                                    <h5><span id="feels-like-dash">---</span>°C</h5>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="icon-wrap bg-info-subtle"><i class="fa-solid fa-wind text-info"></i></div>
+                                <div>
+                                    <small>Wind Speed</small>
+                                    <h5><span id="wind-dash">---</span></h5>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="icon-wrap bg-primary-subtle"><i class="fa-solid fa-eye text-primary"></i>
+                                </div>
+                                <div>
+                                    <small>Visibility</small>
+                                    <h5><span id="visibility-dash">---</span></h5>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="icon-wrap bg-success-subtle">
+                                    <i class="fa-solid fa-gauge-high text-success"></i>
+                                </div>
+                                <div>
+                                    <small>Pressure</small>
+                                    <h5><span id="pressure-dash">---</span></h5>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="metric-item full-width mt-3">
+                            <div class="icon-wrap bg-light-subtle"><i class="fa-solid fa-cloud text-light"></i></div>
+                            <div class="d-flex justify-content-between align-items-center w-100 pe-2">
+                                <small class="mb-0">Cloudiness</small>
+                                <h5 class="mb-0"><span id="cloud-dash">--- %</span></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            document.getElementById('sidebarMenu').classList.add('show');
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function () {
+            document.getElementById('sidebarMenu').classList.remove('show');
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
