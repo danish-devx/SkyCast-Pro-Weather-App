@@ -11,7 +11,10 @@
 
 ## 🔗 Live Deployment
 Experience the premium executive dashboard live in your browser:
-🚀 **[Launch SkyCast Pro Live Demo](https://danish-devx.github.io/SkyCast-Pro-Weather-App/)**
+
+🚀 **[Launch SkyCast Pro (GitHub Pages Demo)](https://danish-devx.github.io/SkyCast-Pro-Weather-App/)**
+
+🚀 **[Launch SkyCast Pro (Vercel Live Demo)](https://sky-cast-pro-weather-app-lime.vercel.app/)**
 
 ---
 
@@ -74,7 +77,9 @@ SkyCast-Pro/
 </a><br />  
 <b>Frontend Web Developer</b><br />  
 <a href="https://github.com/danish-devx">🚀 @danish-devx</a>  
-</p>  ---
+</p> 
+
+---
 
 📄 License
 
